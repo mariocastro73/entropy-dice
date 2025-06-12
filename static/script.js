@@ -71,7 +71,7 @@ function draw() {
     ctx.fillText(circle.id, x - 5, y + 5);
   });
 
-  // Muestra el último número aleatorio
+  // Muestra el último número aleario
   if (lastRandom) {
     ctx.fillStyle = 'black';
     ctx.font = '16px Arial';
@@ -81,13 +81,9 @@ function draw() {
 
 // Dibuja la serie temporal
 function drawTimeSeries() {
-  // Ajusta el ancho del lienzo según las iteraciones
-  const minWidth = 600;
-  const pixelsPerIteration = 10;
-  const newWidth = Math.max(minWidth, (iterations + 1) * pixelsPerIteration);
-  if (timeSeriesCanvas.width !== newWidth) {
-    timeSeriesCanvas.width = newWidth; // Cambia el ancho solo si es necesario
-  }
+  // Mantener el ancho fijo del lienzo
+  const canvasWidth = 600;
+  timeSeriesCanvas.width = canvasWidth; // Fijo en 600 píxeles
   tsCtx.clearRect(0, 0, timeSeriesCanvas.width, timeSeriesCanvas.height);
 
   // Dibuja el marco
@@ -110,7 +106,9 @@ function drawTimeSeries() {
   tsCtx.fillText('0', 30, timeSeriesCanvas.height - 20);
 
   // Dibuja líneas (rojo para izquierda, azul para derecha)
+  const pixelsPerIteration = iterations > 0 ? (timeSeriesCanvas.width - 60) / iterations : timeSeriesCanvas.width - 60;
   tsCtx.lineWidth = 2;
+
   tsCtx.beginPath();
   tsCtx.strokeStyle = 'red';
   proportions.forEach((prop, i) => {

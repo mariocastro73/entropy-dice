@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aplicación de Círculos</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div id="controls">
+    <label for="slider">Número de círculos (N):</label>
+    <input type="range" id="slider" min="1" max="20" value="6" step="1">
+    <span id="sliderValue">6</span>
+    <button id="goButton">Go</button>
+    <label><input type="checkbox" id="autoCheckbox"> Auto</label>
+    <label>Intervalo (ms): <input type="number" id="intervalInput" value="500" min="1"></label>
+  </div>
+  <canvas id="myCanvas" width="600" height="500"></canvas>
+  <script src="/static/script.js"></script>
+</body>
+</html>
